@@ -1,5 +1,5 @@
 // Coarse continent outlines [lon, lat]. Only good enough to read as a world
-// map in dots; the Philippines is drawn in more detail because it is lit.
+// map in dots; the home region is drawn in more detail because it is lit.
 const POLYS = [
   [[-168,65],[-140,70],[-95,72],[-80,63],[-62,56],[-53,47],[-66,44],[-70,42],[-76,35],[-81,31],[-80,25],[-84,30],[-90,29],[-97,26],[-97,21],[-92,18],[-87,21],[-88,16],[-83,10],[-78,8],[-82,8],[-86,12],[-92,14],[-105,20],[-110,24],[-112,30],[-117,32],[-124,40],[-125,49],[-133,55],[-142,60],[-152,59],[-160,56],[-165,60]],
   [[-52,60],[-42,60],[-22,68],[-18,78],[-30,83],[-60,82],[-72,77],[-56,70]],
@@ -55,7 +55,7 @@ export function sampleLand(step) {
   return new Float32Array(out);
 }
 
-export const HOME = { name: 'Manila', lat: 14.6, lon: 121 };
+export const HOME = { name: 'Home', lat: 14.6, lon: 121 };
 
 export const CITIES = [
   { name: 'New York', lat: 40.7, lon: -74 },
@@ -80,5 +80,5 @@ export function angleBetween(a, b) {
   return Math.acos(Math.max(-1, Math.min(1, a[0] * b[0] + a[1] * b[1] + a[2] * b[2])));
 }
 
-// Where the camera starts: east of Manila, so routes leaving it curve.
+// Where the camera starts: east of home, so routes leaving it curve.
 export const VIEW = { lat: 10, lon: 138 };

@@ -18,7 +18,7 @@ mark the old one `Superseded by`.
 | #    | Decision                                                                      | Status   |
 |------|-------------------------------------------------------------------------------|----------|
 | 0001 | [Plain static site, no framework or build](decisions/0001-plain-static-site.md) | Accepted |
-| 0002 | [Position as an offshore outsourcing partner](decisions/0002-outsourcing-positioning.md) | Accepted |
+| 0002 | [Position as an offshore outsourcing partner](decisions/0002-outsourcing-positioning.md) | Superseded by 0014 |
 | 0003 | [No prices anywhere on the site](decisions/0003-no-prices.md)                 | Accepted |
 | 0004 | [Only claims we can stand behind](decisions/0004-only-defensible-claims.md)   | Accepted |
 | 0005 | [Shared styles, duplicated header markup](decisions/0005-shared-styles-duplicated-markup.md) | Accepted |
@@ -30,6 +30,7 @@ mark the old one `Superseded by`.
 | 0011 | [The website lives in `public/`](decisions/0011-site-in-public-folder.md) | Accepted |
 | 0012 | [A PR with a failed build is never merged](decisions/0012-failed-builds-never-merge.md) | Accepted |
 | 0013 | [The globe waits for the first interaction](decisions/0013-globe-waits-for-interaction.md) | Accepted |
+| 0014 | [Do not name where the team is based](decisions/0014-no-team-location.md) | Accepted |
 
 ## Adding a note
 
