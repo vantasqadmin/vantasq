@@ -1,6 +1,6 @@
 # 0002. Position as an offshore outsourcing partner
 
-Status: Accepted
+Status: Superseded by [0014](0014-no-team-location.md)
 Date: 2026-10-01
 
 ## Context
@@ -28,3 +28,4 @@ sells the people doing the work rather than the agency as a black box.
 
 - [0003. No prices anywhere on the site](0003-no-prices.md)
 - [0004. Only claims we can stand behind](0004-only-defensible-claims.md)
+- [0014. Do not name where the team is based](0014-no-team-location.md)

@@ -100,6 +100,13 @@ for (const page of pages) {
   if (hit) fail(page, `pricing language "${hit[0]}" (fees are left to the proposal)`);
 }
 
+// ─── No team location (site-wide rule, docs/decisions/0014) ───
+const location = /philippin|filipin|manila|PHT|"addressCountry"/i;
+for (const page of pages) {
+  const hit = read(page).match(location);
+  if (hit) fail(page, `names the team's location "${hit[0]}"`);
+}
+
 if (errors.length) {
   console.error(errors.map((e) => `✗ ${e}`).join('\n'));
   console.error(`\n${errors.length} problem(s) in ${pages.length} pages`);

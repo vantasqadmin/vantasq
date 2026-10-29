@@ -32,6 +32,9 @@ Everything the website serves lives in `public/`, and Cloudflare publishes only 
 Site-wide rule: no prices, payment terms or billing language anywhere. Fees are
 left to the proposal. Do not add pricing, packages or "affordable" copy.
 
+Site-wide rule: do not name where the team is based (no Philippines, Manila,
+PHT or `addressCountry`). See `docs/decisions/0014-no-team-location.md`.
+
 Assets are cache-busted with `?v=<date>` on every `<link rel="stylesheet">`
 and `<script src>`. After changing any CSS or JS, bump the version string in
 all twelve HTML pages (`grep -l '?v=' public/*.html`).

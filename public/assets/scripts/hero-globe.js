@@ -131,7 +131,7 @@ export function mountGlobe(canvas, { labels = null, scroll = false } = {}) {
     return { ...c, v, omega, pos, geo, phase: i / CITIES.length };
   });
 
-  // One vertex per route head, one per destination, one for Manila.
+  // One vertex per route head, one per destination, one for home.
   const n = routes.length * 2 + 1;
   const sparkPos = new Float32Array(n * 3);
   const sparkAlpha = new Float32Array(n);

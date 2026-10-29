@@ -107,7 +107,7 @@ fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Accept': 'application/json' }
    an IntersectionObserver adding is-in. Under reduced motion only the
    header state runs. */
 (function () {
-  const ASSET_V = '20260926b';
+  const ASSET_V = '20261029b';
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const canObserve = 'IntersectionObserver' in window;
 
