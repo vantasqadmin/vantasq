@@ -4,11 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**Kavyro Solutions** is a static marketing website for an AI-driven digital agency. There is no build system, no package manager, and no framework — everything is plain HTML, CSS, and vanilla JavaScript served directly by Laragon.
+**Vantasq** is a static marketing website for an AI-driven digital agency. There is no build system, no package manager, and no framework — everything is plain HTML, CSS, and vanilla JavaScript served directly by Laragon.
 
 ## Development
 
-Open the site in a browser via Laragon's local server (`http://kavyro.test`, with the document root set to `public/`). There is no build step, compilation, or hot-reload — just edit files and refresh the browser.
+Open the site in a browser via Laragon's local server (`http://vantasq.test`, with the document root set to `public/`). There is no build step, compilation, or hot-reload — just edit files and refresh the browser.
 
 ## File Structure
 
@@ -22,9 +22,9 @@ Everything the website serves lives in `public/`, and Cloudflare publishes only 
 - `portfolio.html` — Portfolio page (same shell plus `assets/styles/portfolio-page.css`; full-width work sections instead of the TOC sidebar, real screenshots and campaign creative in `assets/portfolio/`, CollectionPage/ItemList/BreadcrumbList JSON-LD). No decorative icons here: the images carry the page.
 - `privacy-policy.html` — Privacy policy page
 - `terms-of-service.html` — Terms of service page
-- `assets/` — `styles/`, `scripts/main.js`, self-hosted `fonts/`, `logo.png`/`logo.webp`, `og-image.jpg`
+- `assets/` — `styles/`, `scripts/main.js`, self-hosted `fonts/`, `logo-mark.svg` (header/footer mark), `icon.svg` + `apple-touch-icon.png` + `../favicon.ico` (browser icons), `logo.png` (512px icon for JSON-LD), `og-image.jpg`
 - `assets/scripts/hero-globe.js` + `globe-land.js` — the WebGL globe on the home page, imported by `main.js` after load. `vendor/three.min.js` is a trimmed Three.js r186 build (only the classes `hero-globe.js` imports); regenerate it if the globe needs another Three.js class. `assets/images/globe-poster.svg` is the globe's first frame, shown before WebGL starts and when it cannot.
-- Dark sections use `--night` (#0d3d73). Header: night on every page, using the transparent `assets/logo-mark.*`; the home page adds `nav-over` so it starts clear over the hero.
+- Dark sections use `--night` (#0d3d73). Header: night on every page, using the transparent `assets/logo-mark.svg`; the home page adds `nav-over` so it starts clear over the hero.
 - `robots.txt`, `sitemap.xml`, `_headers` — crawl and Cloudflare header config, deployed as-is
 - `tools/check-site.js` — the CI check (cache-busting, links, JSON-LD, sitemap, pricing); Node is used for nothing else
 - `docs/` — why the site is built the way it is. `docs/decisions/` holds one numbered note per decision, indexed in `docs/README.md`. Read the relevant note before changing a rule it records.
@@ -69,5 +69,5 @@ Handled in `assets/scripts/main.js`. With `FORM_ENDPOINT` empty (the current set
 
 ## Key Conventions
 
-- Contact email: `info@kavyrosolutions.com`
+- Contact email: `info@vantasq.com`
 - Decisions behind these rules: `docs/decisions/`.

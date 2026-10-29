@@ -1,11 +1,11 @@
 ---
-name: kavyro-staging
-description: Land every open pull request that targets staging in the kavyro repo, oldest first. Each PR branch is rebased onto the latest staging (never merged), conflicts are resolved, the branch is force-pushed with lease, its checks (including the Cloudflare preview build) must pass, and the PR is merged with GitHub's rebase method. PRs with a failed build are left open and reported. Use when the user runs /kavyro-staging or asks to merge, land or ship all PRs into staging.
+name: vantasq-staging
+description: Land every open pull request that targets staging in the vantasq repo, oldest first. Each PR branch is rebased onto the latest staging (never merged), conflicts are resolved, the branch is force-pushed with lease, its checks (including the Cloudflare preview build) must pass, and the PR is merged with GitHub's rebase method. PRs with a failed build are left open and reported. Use when the user runs /vantasq-staging or asks to merge, land or ship all PRs into staging.
 context: fork
 agent: general-purpose
 ---
 
-# /kavyro-staging
+# /vantasq-staging
 
 Land every open PR whose base is `staging`, one at a time, oldest first, so
 `staging` stays linear. Always rebase and never merge: no `git merge`, no merge
@@ -28,7 +28,7 @@ Remember the branch the user was on so you can return to it at the end.
 List the candidates:
 
 ```bash
-gh pr list --repo kavyrosolutions/kavyro --base staging --state open \
+gh pr list --repo vantasqadmin/vantasq --base staging --state open \
   --json number,title,headRefName,isDraft,isCrossRepository,mergeable \
   --jq 'sort_by(.number)[]'
 ```
@@ -37,7 +37,7 @@ Skip, and report as skipped:
 - drafts;
 - PRs from forks (`isCrossRepository: true`), because you cannot push to them;
 - PRs whose head already has a failing check, including Cloudflare's
-  "Workers Builds: kavyro-staging" preview build. A failed build is never
+  "Workers Builds: vantasq-staging" preview build. A failed build is never
   merged; report it with its link (see "Checks gate" below).
 
 If nothing is left, say so and stop.
@@ -87,8 +87,8 @@ A push starts new checks, and checks from before the rebase say nothing about
 the rebased code. Wait for every check on the PR's current head to finish:
 
 ```bash
-gh pr checks <number> --repo kavyrosolutions/kavyro --watch
-gh pr checks <number> --repo kavyrosolutions/kavyro --json name,state,link \
+gh pr checks <number> --repo vantasqadmin/vantasq --watch
+gh pr checks <number> --repo vantasqadmin/vantasq --json name,state,link \
   --jq '.[] | .name+" "+.state+" "+.link'
 ```
 
@@ -96,7 +96,7 @@ Checks can take a few seconds to appear after a push; if `gh` reports none
 yet, run it again (a few tries, about a minute in all).
 
 Merge only when every check is `SUCCESS` or `SKIPPED`, and both `site` and
-`Workers Builds: kavyro-staging` are among them. Otherwise do not merge:
+`Workers Builds: vantasq-staging` are among them. Otherwise do not merge:
 leave the PR open, skip it, and carry on with the next PR. A failed, cancelled
 or missing check is a skip. In the report, give each failing or missing
 check's name and link. For a Cloudflare build, the link opens the build log in
@@ -105,7 +105,7 @@ the Cloudflare dashboard; read it there only if the user asks why it failed.
 When the gate passes, merge:
 
 ```bash
-gh pr merge <number> --repo kavyrosolutions/kavyro --rebase --delete-branch
+gh pr merge <number> --repo vantasqadmin/vantasq --rebase --delete-branch
 ```
 
 If `gh pr merge` says the branch is out of date or not mergeable, another PR
@@ -134,7 +134,7 @@ a result that keeps both intents, not one that picks a side.
   and skip it.
 
 Site rules still apply to the resolved result: no pricing language, and the
-contact email is `info@kavyrosolutions.com`.
+contact email is `info@vantasq.com`.
 
 ## 2. Finish
 

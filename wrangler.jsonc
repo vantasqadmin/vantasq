@@ -1,5 +1,5 @@
 {
-  "name": "kavyro-prod",
+  "name": "vantasq",
   "compatibility_date": "2026-09-01",
   // Only the website is published; docs, tools and agent files stay private to the repo.
   "assets": {
@@ -9,7 +9,7 @@
   "previews": {},
   "env": {
     "staging": {
-      "name": "kavyro-staging"
+      "name": "vantasq-staging"
     }
   }
 }

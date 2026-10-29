@@ -86,7 +86,7 @@ pages) are relative to it.
   `:root`) rather than hard-coded colours.
 - **No prices.** No prices, packages, payment terms, billing language or
   "affordable"-type copy anywhere. Fees are left to the proposal.
-- **Contact email** is `info@kavyrosolutions.com` (also `CONTACT_EMAIL` in
+- **Contact email** is `info@vantasq.com` (also `CONTACT_EMAIL` in
   `assets/scripts/main.js`).
 - **Content Security Policy.** `_headers` sets a strict CSP. Any new
   third-party script, font, image host or fetch target must be added there, or
@@ -110,7 +110,7 @@ There are no tests and no build, so check the result directly:
 
 - `git diff` and read every hunk. Nothing unrelated should be in it.
 - Re-run the `git grep` from step 1 to confirm no copy was missed.
-- If the site is running locally (Laragon: `http://kavyro.test`, document
+- If the site is running locally (Laragon: `http://vantasq.test`, document
   root `public/`), open the affected pages. Check desktop and a
   phone-width viewport (about 375px), and check the browser console for
   errors. Layout changes must not cause horizontal scroll on phones.

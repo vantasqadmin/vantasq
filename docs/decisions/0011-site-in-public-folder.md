@@ -23,9 +23,9 @@ pointed at becomes a public URL, so the two must not share a folder.
 ## Consequences
 
 - Nothing outside `public/` can reach the site, including these notes.
-- Laragon's document root for `kavyro.test` points at `public/`.
-- Cloudflare builds with the repo's `wrangler.jsonc`: `kavyro-prod` with the
-  default config, `kavyro-staging` with `--env staging`.
+- Laragon's document root for `vantasq.test` points at `public/`.
+- Cloudflare builds with the repo's `wrangler.jsonc`: `vantasq` with the
+  default config, `vantasq-staging` with `--env staging`.
 
 ## Related
 
