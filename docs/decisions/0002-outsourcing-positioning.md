@@ -7,7 +7,7 @@ Date: 2026-10-01
 
 "Digital agency offering many services" is a crowded pitch. What the business
 actually sells is dedicated Philippine specialists who work the client's
-hours, recruited and managed by Kavyro.
+hours, recruited and managed by Vantasq.
 
 ## Decision
 

@@ -1,21 +1,21 @@
 ---
-name: kavyro-prod
-description: Release the kavyro site to production. Runs /kavyro-staging first to land all open PRs into staging, rebases staging onto main so history stays linear, opens a staging → main PR, waits for its checks to pass, merges it with GitHub's rebase method, and resets staging to match main. Handles conflicts along the way. Use when the user runs /kavyro-prod or asks to release, ship or deploy to production/main.
+name: vantasq-prod
+description: Release the vantasq site to production. Runs /vantasq-staging first to land all open PRs into staging, rebases staging onto main so history stays linear, opens a staging → main PR, waits for its checks to pass, merges it with GitHub's rebase method, and resets staging to match main. Handles conflicts along the way. Use when the user runs /vantasq-prod or asks to release, ship or deploy to production/main.
 ---
 
-# /kavyro-prod
+# /vantasq-prod
 
-Ship `staging` to `main`. Merging into `main` deploys kavyrosolutions.com
-through the Cloudflare Worker `kavyro-prod`. Always rebase and never
+Ship `staging` to `main`. Merging into `main` deploys vantasq.com
+through the Cloudflare Worker `vantasq`. Always rebase and never
 merge: no `git merge`, no merge commits, and `gh pr merge --rebase` only.
 
-Running this skill is the user's authorization to run `/kavyro-staging`, to
+Running this skill is the user's authorization to run `/vantasq-staging`, to
 force-push `staging` (with lease) in steps 2 and 6 only, to open the release PR
 and to merge it into `main`. Never push to `main` directly.
 
 ## 1. Land everything into staging
 
-Invoke the `kavyro-staging` skill (`.claude/skills/kavyro-staging/SKILL.md`).
+Invoke the `vantasq-staging` skill (`.claude/skills/vantasq-staging/SKILL.md`).
 It runs in a forked subagent and returns its report when done; wait for it.
 PRs it skips stay open and are not part of this release. Carry its report
 (merged, skipped, conflicts) into the final report. If its preflight failed
@@ -42,7 +42,7 @@ git rebase origin/main
 ```
 
 The rebase drops merge commits and skips commits whose changes are already
-on `main`. Resolve any conflict using the rules in the `kavyro-staging` skill
+on `main`. Resolve any conflict using the rules in the `vantasq-staging` skill
 ("Resolving conflicts"), then run `git add` and
 `GIT_EDITOR=true git rebase --continue`. If a conflict cannot be resolved with
 confidence, run `git rebase --abort` and stop. Report the conflict; do not
@@ -64,21 +64,21 @@ step 2 again.
 Reuse an open `staging` → `main` PR if there is one. Otherwise create one:
 
 ```bash
-gh pr list --repo kavyrosolutions/kavyro --base main --head staging --state open --json number
-gh pr create --repo kavyrosolutions/kavyro --base main --head staging \
+gh pr list --repo vantasqadmin/vantasq --base main --head staging --state open --json number
+gh pr create --repo vantasqadmin/vantasq --base main --head staging \
   --title "release: staging → main ($(date +%Y-%m-%d))" \
-  --body "<one line per commit in origin/main..origin/staging, plus the PRs /kavyro-staging landed>"
+  --body "<one line per commit in origin/main..origin/staging, plus the PRs /vantasq-staging landed>"
 ```
 
 ## 4. Wait for the release PR's checks
 
-`/kavyro-staging` already gated each PR on its own checks. This gate proves
+`/vantasq-staging` already gated each PR on its own checks. This gate proves
 the combined code works: the build that ran on the `staging` head this PR
-points at, Cloudflare's "Workers Builds: kavyro-staging", which deploys
-staging.kavyrosolutions.com.
+points at, Cloudflare's "Workers Builds: vantasq-staging", which deploys
+staging.vantasq.com.
 
 ```bash
-gh pr checks <number> --repo kavyrosolutions/kavyro --watch --fail-fast
+gh pr checks <number> --repo vantasqadmin/vantasq --watch --fail-fast
 ```
 
 A check can take a few seconds to appear after a push, so if `gh` reports no
@@ -86,12 +86,12 @@ checks yet, wait and run it again (at most a few tries, about a minute in
 all). Then confirm the result:
 
 ```bash
-gh pr checks <number> --repo kavyrosolutions/kavyro --json name,state,link \
+gh pr checks <number> --repo vantasqadmin/vantasq --json name,state,link \
   --jq '.[] | .name+" "+.state+" "+.link'
 ```
 
 Merge only when every check is `SUCCESS` (or `SKIPPED`) and
-"Workers Builds: kavyro-staging" is among them. Otherwise stop, do not merge, and
+"Workers Builds: vantasq-staging" is among them. Otherwise stop, do not merge, and
 leave the PR open. Report the failing or missing check with its link. Open
 that link in the Cloudflare dashboard to read the build log if the user asks
 why it failed.
@@ -99,7 +99,7 @@ why it failed.
 ## 5. Merge it
 
 ```bash
-gh pr merge <number> --repo kavyrosolutions/kavyro --rebase
+gh pr merge <number> --repo vantasqadmin/vantasq --rebase
 ```
 
 Never pass `--delete-branch`: `staging` is permanent.
@@ -121,7 +121,7 @@ git diff --quiet origin/main $OLD && \
 ```
 
 If `git diff` is not quiet, something landed on `staging` after the merge.
-Leave `staging` alone and report it; the next `/kavyro-prod` will rebase it.
+Leave `staging` alone and report it; the next `/vantasq-prod` will rebase it.
 
 ## 7. Finish
 
@@ -130,8 +130,8 @@ Check out the branch the user started on (or `staging`, updated to
 once, without polling in a loop:
 
 ```bash
-gh api repos/kavyrosolutions/kavyro/commits/$(git rev-parse origin/main)/check-runs \
-  --jq '.check_runs[] | select(.name|test("kavyro-prod")) | .name+" "+.status+" "+(.conclusion//"")'
+gh api repos/vantasqadmin/vantasq/commits/$(git rev-parse origin/main)/check-runs \
+  --jq '.check_runs[] | select(.name|test("Workers Builds: vantasq$")) | .name+" "+.status+" "+(.conclusion//"")'
 ```
 
 Report in a few lines: the release PR link, what shipped, PRs that were

@@ -6,7 +6,7 @@ function closeMob() { document.getElementById('mobileNav').classList.remove('ope
    mail client; set it to a FormSubmit / Formspree / serverless URL and the same
    form posts there instead (add that origin to connect-src in _headers). */
 const FORM_ENDPOINT = '';
-const CONTACT_EMAIL = 'info@kavyrosolutions.com';
+const CONTACT_EMAIL = 'info@vantasq.com';
 
 function formSay(status, message, isError) {
 if (!status) return;

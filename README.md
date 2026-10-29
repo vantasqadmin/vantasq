@@ -1,10 +1,10 @@
-# Kavyro Solutions
+# Vantasq
 
-Marketing website for Kavyro Solutions, an AI-driven digital agency. It is a
+Marketing website for Vantasq, an AI-driven digital agency. It is a
 static brochure site whose job is to explain the agency's services and turn
 visitors into enquiries.
 
-Live at [kavyrosolutions.com](https://kavyrosolutions.com).
+Live at [vantasq.com](https://vantasq.com).
 
 ## What the site covers
 
@@ -64,7 +64,7 @@ Only `public/` is deployed. Site paths in this README (`assets/...`,
 
 ## Development
 
-Point Laragon's document root for `kavyro.test` at `public/`.
+Point Laragon's document root for `vantasq.test` at `public/`.
 There is no build step for local work, so edit and refresh.
 
 Pages link to each other by clean URL (`/privacy-policy`, not
@@ -83,13 +83,13 @@ RewriteRule ^(.*)$ $1.html [L]
 
 ## Deployment
 
-Two Cloudflare Workers build from this repo using static assets: `kavyro-prod`
-deploys `main` to `kavyrosolutions.com`, and `kavyro-staging` deploys `staging`
+Two Cloudflare Workers build from this repo using static assets: `vantasq`
+deploys `main` to `vantasq.com`, and `vantasq-staging` deploys `staging`
 and gives every pull request its own preview URL. DNS and SSL are managed in Cloudflare;
 the domain is registered at GoDaddy with nameservers pointed at Cloudflare.
 
 `wrangler.jsonc` tells Cloudflare to publish `public/` and nothing else. Its
-default config is `kavyro-prod`; `env.staging` is `kavyro-staging`, so that
+default config is `vantasq`; `env.staging` is `vantasq-staging`, so that
 Worker's build commands carry `--env staging`.
 
 `_headers` sets security headers and caches `assets/*` for a day, so purge the
@@ -108,4 +108,4 @@ until the cache expires.
 
 ## Contact
 
-info@kavyrosolutions.com
+info@vantasq.com

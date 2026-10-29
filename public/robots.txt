@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://kavyrosolutions.com/sitemap.xml
+Sitemap: https://vantasq.com/sitemap.xml

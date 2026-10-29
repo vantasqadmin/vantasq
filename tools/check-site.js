@@ -87,7 +87,7 @@ for (const page of pages) {
 const sitemap = read('sitemap.xml');
 for (const page of pages) {
   const slug = page === 'index.html' ? '' : page.replace(/\.html$/, '');
-  if (!sitemap.includes(`<loc>https://kavyrosolutions.com/${slug}</loc>`)) {
+  if (!sitemap.includes(`<loc>https://vantasq.com/${slug}</loc>`)) {
     fail('sitemap.xml', `missing ${page}`);
   }
 }

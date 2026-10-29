@@ -16,9 +16,9 @@ merge.
   its own PR.
 - `tools/check-site.js` runs in CI on every PR to `staging` or `main`.
 - Agents follow `AGENTS.md`: they commit and open PRs only when asked
-  (`/kavyro-commit`), never push to `staging` or `main`, and never merge a
-  change PR. `/kavyro-staging` and `/kavyro-prod` handle the two merges, and
-  `/kavyro-prod` waits for checks to pass.
+  (`/vantasq-commit`), never push to `staging` or `main`, and never merge a
+  change PR. `/vantasq-staging` and `/vantasq-prod` handle the two merges, and
+  `/vantasq-prod` waits for checks to pass.
 
 ## Consequences
 
